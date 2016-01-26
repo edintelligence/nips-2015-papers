@@ -31,7 +31,6 @@ def text_from_pdf(pdf_path, temp_path):
     os.remove(temp_path)
     return text
 
-#for link in paper_links[:5]:
 for link in paper_links:
     paper_title = link.contents[0]
     info_link = base_url + link["href"]
@@ -61,6 +60,6 @@ for link in paper_links:
     print(paper_title)
     papers.append([paper_id, paper_title, event_type, pdf_name, abstract, paper_text])
 
-pd.DataFrame(list(nips_authors), columns=["Id","Name"]).to_csv("output/Authors.csv", index=False)
-pd.DataFrame(papers, columns=["Id", "Title", "EventType", "PdfName", "Abstract", "PaperText"]).to_csv("output/Papers.csv", index=False)
-pd.DataFrame(paper_authors, columns=["Id", "PaperId", "AuthorId"]).to_csv("output/PaperAuthors.csv", index=False)
+pd.DataFrame(list(nips_authors), columns=["Id","Name"]).to_csv("output/Authors.csv", index=False, encoding='utf-8')
+pd.DataFrame(papers, columns=["Id", "Title", "EventType", "PdfName", "Abstract", "PaperText"]).to_csv("output/Papers.csv", index=False, encoding='utf-8')
+pd.DataFrame(paper_authors, columns=["Id", "PaperId", "AuthorId"]).to_csv("output/PaperAuthors.csv", index=False, encoding='utf-8')
